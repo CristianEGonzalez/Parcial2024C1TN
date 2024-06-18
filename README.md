@@ -1,4 +1,4 @@
-# Parcial Obj1 1er Cuatrimestre Año 2024 - Turno Noche Comisiones 1 y 1B
+# Parcial Obj1 1er Cuatrimestre Año 2024 - Turno Noche Com. 1 y 1B
 
 ## Centro de Kinesiologia
 
