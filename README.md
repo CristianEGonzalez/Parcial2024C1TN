@@ -6,7 +6,7 @@ En un centro de kinesiología hay distintos tratamientos para la cura de lesione
 Se nos pide armar un modelo que permita estudiar algunos parámetros sobre los pacientes, y controlar el uso de los aparatos.
 
 
-## 1. Aparatos y pacientes.
+### 1. Aparatos y pacientes.
 De cada paciente del centro de kinesiologia interesa conocer la edad, el nivel de fortaleza muscular y el nivel de dolor.  
 El nivel de fortaleza y el nivel de dolor son valores que se van modificando a medida que el paciente utiliza aparatos.  
 El centro tiene distintos tipos de aparatos, en este enunciado incluimos sólo tres. La incorporación de nuevos tipos de aparatos debe ser sencilla, no debería ser necesario modificar código existente sino solamente agregar nuevas definiciones.
@@ -25,7 +25,7 @@ Requerimientos:
 por razones que van a aparecer más adelante, conviene definir una clase para cada tipo de aparato, y que los aparatos sean instancias de esas clases.
 
 
-### Tests parte 1
+#### Tests parte 1
 Consideremos las siguientes dos personas.
 - Leonardo, 40 años de edad, nivel de dolor 10, fortaleza 20.
 - Milena, 3 años de edad, nivel de dolor 30, fortaleza 50.
@@ -40,7 +40,7 @@ Crear un aparato de cada tipo, y verificar que
 Estos tests deben ser independientes.
 
 
-## 2. Rutinas.
+### 2. Rutinas.
 A cada paciente se le asigna una serie de aparatos a ser usados en un orden determinado, cuando acude a al centro a realizar una sesión. A esto lo llamaremos la _rutina_ asignada al cliente.  
 Una rutina puede incluir que se utilice más de una vez el mismo aparato. Por ejemplo: una bicicleta, un minitramp, la misma bicicleta de nuevo, un magneto.  
 Cada vez que un paciente concurre al centro, realiza la rutina que tiene asignada.  
@@ -53,7 +53,7 @@ los aparatos asignados al momento de iniciarla.
 - Que el paciente realice una sesión completa: debe usar todos los aparatos incluidos en su rutina, en el orden indicado. 
 
 
-### Tests parte 2
+#### Tests parte 2
 Considerar las dos personas definidas en los tests de la parte 1. La rutina de Leonardo es la indicada en el enunciado. Milena usa, primero un magneto, después una bicicleta. 
 
 Verificar que:
@@ -61,7 +61,7 @@ Verificar que:
 - Milena no puede hacer la rutina que tiene asignada.
 
 
-## 3. Pacientes especiales.
+### 3. Pacientes especiales.
 El centro observa que algunes de sus pacientes tienen comportamientos particulares. Quedan definidos estos tres tipos de paciente. 
 
 - **Resistente**:  
@@ -84,7 +84,7 @@ Requerimientos:
 - modificar el valor de puntos de dolor que se decrementa para todos los pacientes de Rápida Recuperación.
 
 
-### Tests parte 3
+#### Tests parte 3
 Considerar las siguientes personas.
 - Nicolás es un paciente resistente, edad 40, dolor 10, fortaleza 20, la misma rutina que Leonardo, con los mismos aparatos.
 - Victoria es una paciente caprichosa, edad 30, dolor 10, fortaleza 40, la misma rutina que Leonardo, con los mismos aparatos.
@@ -100,7 +100,7 @@ Verificar que:
 - Zoe puede hacer la rutina que tiene asignada. Después de asignar a 2 el valor de decremento de dolor para pacientes de rápida recuperación, y de que Zoe haga su rutinauna vez, su nivel de dolor baja a 3.4, y su fortaleza sube a 51.
 
 
-## 4. El centro.
+### 4. El centro.
 Agregar al modelo un objeto que represente al centro de kinesiología, con los siguientes requerimientos:
 - Saber los colores de sus aparatos, sin repetidos. 
 - Saber cuáles son los pacientes menores de 8 años
@@ -108,7 +108,7 @@ Agregar al modelo un objeto que represente al centro de kinesiología, con los s
 
 
 
-## 5. Mantenimiento de aparatos.
+### 5. Mantenimiento de aparatos.
 Agregar al modelo lo necesario para poder saber si un aparato necesita mantenimiento, y registrar las consecuencias de los mantenimientos. Para ello, hay que registrar las consecuencias que tiene el uso de un aparato por un paciente, _para el aparato_, de acuerdo a las siguientes definiciones.
 
 - **Magneto**: pierde un punto de imantación en cada uso. Si tiene menos de 100 puntos de imantación, necesita mantenimiento. Hacerle mantenimiento implica agregar 500 puntos de imantación. Un magneto nuevo tiene 800 puntos de imantación.
@@ -121,17 +121,3 @@ Agregar las siguientes consultas y acciones al centro
 - Saber si está en óptimas condiciones, o sea, si ninguno de sus aparatos necesita mantenimiento.
 - Saber si está complicado, o sea, si la mitad o más de sus aparatos necesita mantenimiento.
 - Registrar una visita de técnico, que tiene el efecto de hacerle mantenimiento a todos los aparatos que lo necesiten.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
