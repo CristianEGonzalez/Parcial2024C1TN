@@ -1,4 +1,6 @@
-# Centro de Kinesiologia
+# Parcial Obj1 1er Cuatrimestre Año 2024 - Turno Noche Comisiones 1 y 1B
+
+## Centro de Kinesiologia
 
 En un centro de kinesiología hay distintos tratamientos para la cura de lesiones dolorosas y fortalecimiento muscular.
 Se nos pide armar un modelo que permita estudiar algunos parámetros sobre los pacientes, y controlar el uso de los aparatos.
