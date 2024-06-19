@@ -1,0 +1,97 @@
+import pacientes.*
+import aparatos.*
+
+const bici = new Bicicleta()
+const biciRoja = new Bicicleta(color=rojo)
+const magnetoVerde = new Magneto(color=verde)
+const magneto = new Magneto()
+const mini = new Minitramp()
+
+const leonardo = new Paciente(edad=40,dolor=10,fortaleza=20,rutina=[bici,mini,bici,magneto])
+const milena = new Paciente(edad=3,dolor=30,fortaleza="50",rutina=[magneto,bici])
+
+describe "test pacientes"{
+
+	test "leonardo usa el magneto"{
+		leonardo.usar(magneto)
+		assert.equals(9,leonardo.dolor())
+	}
+	
+	test "leonardo puede usar todos los aparatos"{
+		assert.that(magneto.puedeUsar(leonardo))
+		assert.that(bici.puedeUsar(leonardo))
+		assert.that(mini.puedeUsar(leonardo))
+	}
+
+	test "Después de usar la bicicleta una vez, el nivel de dolor de Leonardo baja a 6, y la fortaleza sube a 23."{
+		leonardo.usar(bici)
+		assert.equals(6, leonardo.dolor())
+		assert.equals(23, leonardo.fortaleza())
+	}
+	
+	test "Después de usar el minitramp una vez, la fortaleza de Leonardo sube a 24."{
+		leonardo.usar(mini)
+		assert.equals(24, leonardo.fortaleza())
+	}
+
+	test "milena no puede usar la bici, da error" {
+		assert.throwsExceptionWithMessage("El paciente no puede usar este aparato", {milena.usar(bici)})
+	}
+	
+	test "milena usa el magneto"{
+		milena.usar(magneto)
+		assert.equals(27,milena.dolor())
+	}
+	
+}
+
+describe "rutinas"{
+	test "Leonardo puede hacer la rutina que tiene asignada. Después de hacerla una vez, su nivel de dolor baja a 1.8, y su fortaleza sube a 30."{
+		assert.that(leonardo.puedeHacerRutina())
+	}
+	
+	test "Después de hacerla una vez, su nivel de dolor baja a 1.8, y su fortaleza sube a 30."{
+		leonardo.realizarRutina()
+		assert.equals(1.8,leonardo.dolor())
+		assert.equals(30,leonardo.fortaleza())
+	}
+	
+	test "Milena no puede hacer la rutina que tiene asignada."{
+		assert.notThat(milena.puedeHacerRutina())
+	}
+}
+
+describe "pacientes especiales"{
+	
+const nicolas = new Resistente(edad=40,dolor=10,fortaleza=20,rutina=[bici,mini,bici,magneto])
+const victoria = new Caprichoso(edad=30,dolor=10,fortaleza=40,rutina=[bici,mini,bici,magneto])
+const julian = new Caprichoso(edad=20,dolor=54,fortaleza=50,rutina=[biciRoja,magnetoVerde,bici])
+const zoe = new RapidaRecuperacion(edad=50,dolor=14,fortaleza=40,rutina=[bici,mini,bici,magneto])
+
+	test "Nicolás puede hacer la rutina que tiene asignada. Después de hacerla una vez, su nivel de dolor baja a 1.8, y su fortaleza sube a 34."{
+		nicolas.realizarRutina()
+		assert.equals(1.8, nicolas.dolor())
+		assert.equals(34, nicolas.fortaleza())
+	}
+	
+	test "Victoria no puede hacer la rutina"{
+		assert.notThat(victoria.puedeHacerRutina())
+	}
+	
+	//DA MAL LOS EQUALS
+	test "Julian puede hacer rutina, su dolor baja a 29.3 y su fortaleza sube a 62"{
+		assert.that(julian.puedeHacerRutina())
+		julian.realizarRutina()
+		assert.equals(29.3,julian.dolor())
+		assert.equals(62,julian.fortaleza())
+	}
+	
+	test "Zoe puede hacer la rutina que tiene asignada. Después de asignar a 2 el valor de decremento de dolor para pacientes de rápida recuperación, y de que Zoe haga su rutinauna vez, su nivel de dolor baja a 3.4, y su fortaleza sube a 51."{
+		assert.that(zoe.puedeHacerRutina())
+		recuperacion.recuperacionAdicional(2)
+		zoe.realizarRutina()
+		assert.equals(3.4,zoe.dolor())
+		assert.equals(51,zoe.fortaleza())
+	}
+
+}
